@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1= title
+  .main.container
+    .row
+        form(method='POST' action='/signup').form-horizontal
+            fieldset
+                div
+                  legend Register
+                div.control-group
+                    label.control-label Email
+                    div.controls
+                        input(type='text' id='email' name='email' ).input-xlarge
+                div.control-group
+                    label.control-label Password
+                    div.controls
+                        input(type='password' id='password' name='password' ).input-xlarge
+                div.control-group
+                    label.control-label First Name
+                    div.controls
+                        input(type='text' id='first_name' name='first_name' ).input-xlarge
+                div.control-group
+                    label.control-label Last Name
+                    div.controls
+                        input(type='text' id='last_name' name='last_name' ).input-xlarge
+                div.control-group
+                    div.controls
+                        button.btn.btn-primary(type='submit') Register

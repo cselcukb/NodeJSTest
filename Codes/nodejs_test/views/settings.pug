@@ -1,0 +1,90 @@
+extends layout
+
+block content
+  h1= title
+  a(href='/') Anasayfa
+  <div id="app" class="row">
+    <div class="col-md-5">
+        <multiselect :options="options" :value="optionsProxy" @input="updateSelected" :multiple="true" :searchable="true" :close-on-select="true" placeholder="Search" :custom-label="customLabel" :loading="showLoadingSpinner" :hide-selected="true"></multiselect>
+
+        <ul class="resources-list">
+          <template v-for="(resource, index) in selectedResources">
+            <li class="resource-item" :data-index="index">
+              <div class="resource-info">
+                <div class="resource-iso">
+                  <span>{{ resource.country_iso }}</span>
+                </div>
+                <div class="resource-nicename" :id="index">
+                  <span>{{ resource.country_nicename }}</span>
+                </div>
+                <div class="resource-numcode" :id="index">
+                  <span>Numara Kodu: {{ resource.country_numcode }}</span>
+                </div>
+              </div>
+              <div class="delete-controls" v-on:click.prevent="removeDependency(index)">
+                <i class="fa fa-times fa-fw"></i>
+              </div>
+            </li>
+          </template>
+        </ul>
+    </div>
+    <div class="col-md-5">
+        <form action="" method="POST">
+          <template v-for="(resource, index) in selectedResources">
+            <input :id="index" type="hidden" name="user_country[]" v-model="resource.country_id">
+          </template>
+          <template v-if="selectedResources.length > 0">
+          <input type="submit" value="Güncelle">
+          </template>
+        </form>
+    </div>
+  </div>
+  script.
+      var multiselect = new Vue({
+          components: {
+              Multiselect: window.VueMultiselect.default
+          },
+          data: {
+              options: [
+
+              ],
+              optionsProxy: [],
+              selectedResources: [],
+              showLoadingSpinner: false
+          },
+          methods: {
+              customLabel (option) {
+                  return `${option.country_iso} - ${option.country_name}`
+              },
+              updateSelected(value) {
+                  value.forEach((resource) => {
+                      // Adds selected resources to array
+                      this.selectedResources.push(resource)
+                  })
+                  // Clears selected array
+                  // This prevents the tags from being displayed
+                  //this.optionsProxy = []
+              },
+              loadDatas( datas, selected_datas ){
+                      // get body data
+                      this.options = []
+                      datas.forEach((object) => {
+                          this.options.push(object);
+                          selected_datas.forEach((object2) => {
+                              if(object.country_id == object2){
+                                this.selectedResources.push(object);
+                                //this.optionsProxy.push(object);
+                              }
+                          });
+                      });
+                      this.showLoadingSpinner = false
+              },
+              removeDependency(index) {
+                  this.selectedResources.splice(index, 1)
+              }
+          },
+          created() {
+              const value = ''
+              this.loadDatas( !{JSON.stringify(countries).replace(/<\//g, '<\\/')}, !{JSON.stringify(user_countries).replace(/<\//g, '<\\/')} )
+          }
+      }).$mount('#app')

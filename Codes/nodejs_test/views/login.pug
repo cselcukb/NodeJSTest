@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title
+  .main.container
+    .row
+        div.jumbotron
+            form(method='POST' action='/login').form-horizontal
+                fieldset
+                    div.control-group
+                        label.control-label Email
+                        div.controls
+                            input(type='text' id='email' name='email' ).input-xlarge
+                    div.control-group
+                        label.control-label Password
+                        div.controls
+                            input(type='password' id='password' name='password' ).input-xlarge
+                    div.control-group
+                        div.controls
+                            button.btn.btn-primary(type='submit') Log in
+                        div.controls
+                            label.control-label Yeni Üye mi olacaksın?
+                            a(href='/signup').btn.btn-secondary Giriş

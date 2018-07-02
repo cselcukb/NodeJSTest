@@ -1,0 +1,50 @@
+CREATE TABLE `country` (
+  `country_id` int(11) NOT NULL AUTO_INCREMENT,
+  `country_iso` char(2) NOT NULL,
+  `country_name` varchar(80) NOT NULL,
+  `country_nicename` varchar(80) NOT NULL,
+  `country_iso3` char(3) DEFAULT NULL,
+  `country_numcode` smallint(6) DEFAULT NULL,
+  `country_phonecode` int(5) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`country_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=240 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `event` (
+  `event_id` int(11) NOT NULL AUTO_INCREMENT,
+  `country_id` int(11) DEFAULT NULL,
+  `event_site_id` varchar(100) DEFAULT NULL,
+  `event_name` varchar(100) DEFAULT NULL,
+  `event_price` text,
+  `event_date` varchar(100) DEFAULT NULL,
+  `event_location` varchar(100) DEFAULT NULL,
+  `event_link` varchar(100) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`event_id`),
+  UNIQUE KEY `unq` (`country_id`,`event_site_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) DEFAULT NULL,
+  `password` varchar(80) DEFAULT NULL,
+  `first_name` varchar(100) DEFAULT NULL,
+  `last_name` varchar(100) DEFAULT NULL,
+  `birthdate` varchar(30) DEFAULT NULL,
+  `is_active` tinyint(4) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `user_country` (
+  `user_country_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(100) DEFAULT NULL,
+  `country_id` varchar(100) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`user_country_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+

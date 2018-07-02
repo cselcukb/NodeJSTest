@@ -1,0 +1,4 @@
+- DB Dosyalarını db ye import edin. 
+- Config -> db.js teki database ayarlarını güncelleyin.
+
+Program açılışında kayıt ve giriş sayfasına yönlendirilecek, buradan kayıt linkine tıklayıp, kayıt olunup yeni kullanıcıyla giriş yapılabilir. Ana sayfadan ayarlar linkine tıklanarak ülke eklenecek sayfaya geçilebilir. {base_url}/dataPipe/scraper/getAllEventData üzerinde db de yüklü ülkelerin verileri webscrape edilebilir.

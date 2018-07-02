@@ -1,0 +1,26 @@
+Proje Dökümanı
+
+Projenin Tarifi:
+
+Bu proje bir kullanıcının dövüş sporları müsabakalarını takip etmesini sağlamayı amaçlamaktadır. Ülke ve tarihe göre kullanıcıya müsabakaları listeler.
+Bu müsabakalar smoothcomp.com sitesinden çekilecektir.
+
+* Proje login temelli bir web uygulaması olacaktır.
+* Kayıt olup giriş yapıldığı zaman bir ayarlar sayfası ve bir dashboard bulunacaktır.
+* Ayarlar sayfasında dünyadaki tüm ülkeler listelenecektir. Kullanıcı bu ülkeler arasından istediği sayıda seçeneği işaretlediği zaman uygulama bu
+seçimi database'e yazarak hatırlayacaktır.
+* Bu ülke seçimine göre kullanıcı uygulamaya giriş yaptığı zaman dashboardunda seçili ülkelerdeki
+müsabakalar listelenecektir. Bu müsabakaların listesi smoothcomp.com sitesinden çekilecek. Ayrıca bir de dashboard'da bir tarih filtresi bulunacaktır.
+
+Müsabakalar listesinde aşağıdaki bilgiler yer almalıdır.
+- Organizasyon ismi, katılım ücreti, tarih, yer
+
+
+
+Kullanılacak teknolojiler;
+
+Proje nodeJS ile geliştirilecek ve express framework'unu kullanacaktır.
+DB ile yapılacak tüm işlemler Sequelize üzerinden yapılacaktır.
+Projenin login sistemi Passport.js kullanılarak yaplacaktır.
+Ön yüz Vue.js ile hazırlanacaktır.
+
