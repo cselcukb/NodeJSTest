@@ -23,7 +23,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+//var usersRouter = require('./routes/users');
 var dataPipeRouter = require('./routes/dataPipe');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//app.use('/users', usersRouter);
 app.use('/dataPipe', dataPipeRouter);
 
 // catch 404 and forward to error handler
